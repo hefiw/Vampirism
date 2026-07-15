@@ -26,6 +26,8 @@ import de.teamlapen.vampirism.api.event.BloodDrinkEvent;
 import de.teamlapen.vampirism.api.util.VResourceLocation;
 import de.teamlapen.vampirism.config.VampirismConfig;
 import de.teamlapen.vampirism.core.*;
+import de.teamlapen.vampirism.data.BloodEffectData;
+import de.teamlapen.vampirism.data.BloodEffectManager;
 import de.teamlapen.vampirism.effects.SanguinareEffect;
 import de.teamlapen.vampirism.effects.VampireNightVisionEffectInstance;
 import de.teamlapen.vampirism.entity.ExtendedCreature;
@@ -49,9 +51,11 @@ import de.teamlapen.vampirism.util.*;
 import de.teamlapen.vampirism.world.MinionWorldData;
 import de.teamlapen.vampirism.world.ModDamageSources;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Holder;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.particles.ItemParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.Tag;
 import net.minecraft.network.chat.Component;
@@ -62,6 +66,7 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.DamageTypes;
+import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.*;
@@ -70,6 +75,8 @@ import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.WrappedGoal;
 import net.minecraft.world.entity.ai.goal.target.TargetGoal;
+import net.minecraft.world.entity.monster.AbstractSkeleton;
+import net.minecraft.world.entity.monster.Enemy;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.item.ItemStack;
@@ -1267,6 +1274,20 @@ public class VampirePlayer extends FactionBasePlayer<IVampirePlayer> implements 
             saturationMod = ((IBiteableEntity) entity).getBloodSaturation();
         }
         if (blood > 0) {
+            for (BloodEffectData effect :
+                    BloodEffectManager.get(entity.getType())) {
+
+                Holder<MobEffect> mobEffect = BuiltInRegistries.MOB_EFFECT.getHolder(effect.effect()).orElse(null);
+                if (mobEffect != null) {
+                    player.addEffect(
+                            new MobEffectInstance(
+                                    mobEffect,
+                                    effect.duration(),
+                                    effect.amplifier()
+                            )
+                    );
+                }
+            }
             drinkBlood(blood, saturationMod, new DrinkBloodContext(entity));
             CompoundTag updatePacket = new CompoundTag();
             updatePacket.put(this.bloodStats.nbtKey(), this.bloodStats.serializeUpdateNBT(entity.registryAccess()));

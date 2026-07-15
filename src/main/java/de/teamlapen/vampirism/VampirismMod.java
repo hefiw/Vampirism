@@ -21,6 +21,7 @@ import de.teamlapen.vampirism.client.VampirismModClient;
 import de.teamlapen.vampirism.client.renderer.VampirismClientEntityRegistry;
 import de.teamlapen.vampirism.config.VampirismConfig;
 import de.teamlapen.vampirism.core.*;
+import de.teamlapen.vampirism.data.reloadlistener.BloodEffectReloadListener;
 import de.teamlapen.vampirism.data.reloadlistener.SingleJigsawReloadListener;
 import de.teamlapen.vampirism.data.reloadlistener.SkillTreeReloadListener;
 import de.teamlapen.vampirism.data.reloadlistener.SundamageReloadListener;
@@ -141,6 +142,7 @@ public class VampirismMod {
         event.addListener(new SingleJigsawReloadListener());
         event.addListener(new SundamageReloadListener(((TagManagerAccessor) ((ReloadableServerResourcesAccessor) event.getServerResources()).getTagManager()).getRegistryAccess()));
         event.addListener(new SkillTreeReloadListener());
+        event.addListener(new BloodEffectReloadListener());
     }
 
     private void checkEnv() {

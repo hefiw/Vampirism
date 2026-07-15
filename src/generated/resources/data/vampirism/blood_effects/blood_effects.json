@@ -1,0 +1,16 @@
+{
+  "minecraft:zombie": [
+    {
+      "effect": "minecraft:poison",
+      "duration": 300,
+      "amplifier": 0
+    }
+  ],
+  "minecraft:blaze": [
+    {
+      "effect": "minecraft:fire_resistance",
+      "duration": 400,
+      "amplifier": 0
+    }
+  ]
+}

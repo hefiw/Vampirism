@@ -21,6 +21,7 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.util.Mth;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.AgeableMob;
@@ -73,15 +74,12 @@ public class ExtendedCreature implements IAttachment, IExtendedCreatureVampirism
         this.entity = entity;
         // We need to call getEntry and not getOrCreateEntry because the values can not be calculated until after the entity constructor has finished
         IEntityBlood entry = VampirismAPI.entityRegistry().getEntry(entity);
-        if (entry != null && entry.blood() > 0) {
-            maxBlood = entry.blood();
-            canBecomeVampire = VampirismAPI.entityRegistry().getConverterEntry(entity) != null;
-        } else {
-            if (entry == null) {
-                markForBloodCalculation = true;
-            }
+        if (entry != null && entry.blood() <= 0) {
             maxBlood = -1;
             canBecomeVampire = false;
+        } else {
+            maxBlood = Math.max(1, Mth.ceil(entity.getMaxHealth() / 2.0F));
+            canBecomeVampire = VampirismAPI.entityRegistry().getConverterEntry(entity) != null;
         }
         blood = maxBlood;
         poisonousBlood = false;
