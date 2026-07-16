@@ -177,7 +177,6 @@ public class ServerPayloadHandler {
                     }
                 }
                 case SHOW_MINION_CALL_SELECTION -> ClientboundRequestMinionSelectPacket.createRequestForPlayer(player, ClientboundRequestMinionSelectPacket.Action.CALL).ifPresent(a -> player.connection.send(a));
-                case VAMPIRISM_MENU -> factionPlayerOpt.ifPresent(fPlayer -> fPlayer.getTaskManager().openVampirismMenu());
                 case RESURRECT -> VampirePlayer.get(player).tryResurrect();
                 case GIVE_UP -> VampirePlayer.get(player).giveUpDBNO();
             }

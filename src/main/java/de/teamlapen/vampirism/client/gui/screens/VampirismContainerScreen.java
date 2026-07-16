@@ -8,7 +8,7 @@ import de.teamlapen.vampirism.api.entity.player.task.ITaskInstance;
 import de.teamlapen.vampirism.api.items.IRefinementItem;
 import de.teamlapen.vampirism.api.util.VResourceLocation;
 import de.teamlapen.vampirism.client.core.ModKeys;
-import de.teamlapen.vampirism.client.gui.screens.skills.SkillsScreen;
+//import de.teamlapen.vampirism.client.gui.screens.skills.SkillsScreen;
 import de.teamlapen.vampirism.entity.factions.FactionPlayerHandler;
 import de.teamlapen.vampirism.entity.player.VampirismPlayerAttributes;
 import de.teamlapen.vampirism.inventory.TaskMenu;
@@ -75,14 +75,14 @@ public class VampirismContainerScreen extends AbstractContainerScreen<VampirismM
         return this.menu;
     }
 
-    @Override
+    /*@Override
     public boolean keyPressed(int keyCode, int scanCode, int modifiers) {
         if (ModKeys.VAMPIRISM_MENU.matches(keyCode, scanCode)) {
             this.onClose();
             return true;
         }
         return super.keyPressed(keyCode, scanCode, modifiers);
-    }
+    }*/
 
     @Override
     public boolean mouseDragged(double mouseX, double mouseY, int button, double dragX, double dragY) {
@@ -148,12 +148,12 @@ public class VampirismContainerScreen extends AbstractContainerScreen<VampirismM
 
         this.list = this.addRenderableWidget(new TaskList(Minecraft.getInstance(), this.menu, factionPlayer, this.leftPos + 83, this.topPos + 7, 137, 104, () -> new ArrayList<>(this.menu.getTaskInfos())));
 
-        var button1 = this.addRenderableWidget(new ImageButton(this.leftPos + 7, this.topPos + 90, 20, 20,  SKILLS,  context -> {
+        /*var button1 = this.addRenderableWidget(new ImageButton(this.leftPos + 7, this.topPos + 90, 20, 20,  SKILLS,  context -> {
             if (this.minecraft.player.isAlive() && VampirismPlayerAttributes.get(this.minecraft.player).faction != null) {
                 FactionPlayerHandler.getCurrentFactionPlayer(this.minecraft.player).ifPresent(f  -> Minecraft.getInstance().setScreen(new SkillsScreen(f, this)));
             }
         }, Component.empty()));
-        button1.setTooltip(Tooltip.create(Component.translatable("gui.vampirism.vampirism_menu.skill_screen")));
+        button1.setTooltip(Tooltip.create(Component.translatable("gui.vampirism.vampirism_menu.skill_screen")));*/
 
         var button2 = this.addRenderableWidget(new ImageButton(this.leftPos + 7, this.topPos + 126, 20, 20, SETTINGS, (context) -> {
             EditSelectActionScreen.show();

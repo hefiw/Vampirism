@@ -254,8 +254,8 @@ public class GuideBook implements IGuideBook {
         entries.put(VResourceLocation.mod(base + "lord"), new EntryText(lordPages, Component.translatable(base + "lord")));
 
 
-        List<IPage> vampirismMenu = new ArrayList<>(PageHelper.pagesForLongText(translateComponent("guide.vampirism.overview.vampirism_menu.text", ModKeys.VAMPIRISM_MENU.getTranslatedKeyMessage()).append(translateComponent("guide.vampirism.overview.vampirism_menu.text_vampire", translateComponent("guide.vampirism.items.accessories"))))); //Lang key shared with vampires
-        entries.put(VResourceLocation.mod(base + "vampirism_menu"), new EntryText(vampirismMenu, translateComponent("guide.vampirism.overview.vampirism_menu")));
+        //List<IPage> vampirismMenu = new ArrayList<>(PageHelper.pagesForLongText(translateComponent("guide.vampirism.overview.vampirism_menu.text", ModKeys.VAMPIRISM_MENU.getTranslatedKeyMessage()).append(translateComponent("guide.vampirism.overview.vampirism_menu.text_vampire", translateComponent("guide.vampirism.items.accessories"))))); //Lang key shared with vampires
+        //entries.put(VResourceLocation.mod(base + "vampirism_menu"), new EntryText(vampirismMenu, translateComponent("guide.vampirism.overview.vampirism_menu")));
 
 
         List<IPage> unvampirePages = new ArrayList<>();
@@ -350,8 +350,8 @@ public class GuideBook implements IGuideBook {
         lordPages.addAll(helper.addLinks(PageHelper.pagesForLongText(translateComponent("guide.vampirism.common.minion_control", ModKeys.MINION.getTranslatedKeyMessage(), translate("text.vampirism.minion.call_single"), translate("text.vampirism.minion.respawn")))));
         entries.put(VResourceLocation.mod(base + "lord"), new EntryText(lordPages, Component.translatable(base + "lord")));
 
-        List<IPage> vampirismMenu = new ArrayList<>(PageHelper.pagesForLongText(translateComponent("guide.vampirism.overview.vampirism_menu.text", ModKeys.VAMPIRISM_MENU.getTranslatedKeyMessage()))); //Lang key shared with vampires
-        entries.put(VResourceLocation.mod(base + "vampirism_menu"), new EntryText(vampirismMenu, translateComponent("guide.vampirism.overview.vampirism_menu")));
+        //List<IPage> vampirismMenu = new ArrayList<>(PageHelper.pagesForLongText(translateComponent("guide.vampirism.overview.vampirism_menu.text", ModKeys.VAMPIRISM_MENU.getTranslatedKeyMessage()))); //Lang key shared with vampires
+        //entries.put(VResourceLocation.mod(base + "vampirism_menu"), new EntryText(vampirismMenu, translateComponent("guide.vampirism.overview.vampirism_menu")));
 
         List<IPage> unHunterPages = new ArrayList<>();
         unHunterPages.addAll(helper.addLinks(PageHelper.pagesForLongText(translateComponent(base + "unhunter.text", loc(ModItems.INJECTION_SANGUINARE.get()), loc(ModBlocks.MED_CHAIR.get()))), VResourceLocation.mod("guide.vampirism.items.injection_empty"), VResourceLocation.mod("guide.vampirism.blocks.item_med_chair")));
@@ -536,9 +536,9 @@ public class GuideBook implements IGuideBook {
         //Vampirism 1.8
         List<IPage> v1_8 = new ArrayList<>(PageHelper.pagesForLongText(translateComponent(base1_8 + "overview.text")));
         //vampirism menu
-        List<IPage> vampirism_menu = PageHelper.pagesForLongText(translateComponent(base1_8 + "vampirism_menu.text", ModKeys.VAMPIRISM_MENU.getTranslatedKeyMessage()));
-        vampirism_menu.add(new PageTextImage(translateComponent(base1_8 + "vampirism_menu.image"), ResourceLocation.parse(IMAGE_BASE + "vampirism_menu.png"), false));
-        v1_8.addAll(vampirism_menu);
+        //List<IPage> vampirism_menu = PageHelper.pagesForLongText(translateComponent(base1_8 + "vampirism_menu.text", ModKeys.VAMPIRISM_MENU.getTranslatedKeyMessage()));
+        //vampirism_menu.add(new PageTextImage(translateComponent(base1_8 + "vampirism_menu.image"), ResourceLocation.parse(IMAGE_BASE + "vampirism_menu.png"), false));
+        //v1_8.addAll(vampirism_menu);
         //vampire accessories
         List<IPage> accessories = PageHelper.pagesForLongText(translateComponent(base1_8 + "accessories.text"));
         accessories.add(new PageTextImage(translateComponent(base1_8 + "accessories.image"), ResourceLocation.parse(IMAGE_BASE + "vampire_accessories.png"), false));

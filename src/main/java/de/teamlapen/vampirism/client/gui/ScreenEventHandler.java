@@ -41,7 +41,7 @@ public class ScreenEventHandler {
         }
     }
 
-    @SubscribeEvent
+    /*@SubscribeEvent
     public void onInitGuiEventPost(ScreenEvent.Init.@NotNull Post event) {
         if (event.getScreen() instanceof InventoryScreen && VampirismConfig.CLIENT.guiSkillButton.get() && FactionPlayerHandler.getCurrentFactionPlayer(event.getScreen().getMinecraft().player).isPresent()) {
             button = new ImageButton(((InventoryScreen) event.getScreen()).getGuiLeft() + VampirismConfig.CLIENT.overrideGuiSkillButtonX.get(), event.getScreen().height / 2 + VampirismConfig.CLIENT.overrideGuiSkillButtonY.get(), 20, 18, INVENTORY_SKILLS, (context) -> {
@@ -59,6 +59,6 @@ public class ScreenEventHandler {
                 }
             }
         }
-    }
+    }*/
 
 }
