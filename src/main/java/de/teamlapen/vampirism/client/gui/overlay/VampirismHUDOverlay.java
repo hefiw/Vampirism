@@ -8,6 +8,7 @@ import de.teamlapen.lib.lib.util.FluidLib;
 import de.teamlapen.vampirism.api.entity.IBiteableEntity;
 import de.teamlapen.vampirism.api.entity.IExtendedCreatureVampirism;
 import de.teamlapen.vampirism.api.entity.hunter.IHunterMob;
+import de.teamlapen.vampirism.api.entity.player.skills.ISkill;
 import de.teamlapen.vampirism.api.entity.vampire.IVampireMob;
 import de.teamlapen.vampirism.api.util.VResourceLocation;
 import de.teamlapen.vampirism.config.VampirismConfig;
@@ -62,6 +63,7 @@ public class VampirismHUDOverlay {
     public static final ResourceLocation FANG_SPRITE = VResourceLocation.mod("fang/fang");
     public static final ResourceLocation PROGRESS_BACKGROUND_SPRITE = VResourceLocation.mod("fang/progress_background");
     public static final ResourceLocation PROGRESS_FOREGROUND_SPRITE = VResourceLocation.mod("fang/progress_foreground");
+    private SkillUnlockOverlay currentSkillOverlay;
 
     private int screenColor = 0;
     private int screenPercentage = 0;
@@ -89,6 +91,10 @@ public class VampirismHUDOverlay {
             color |= 0xFF000000;
         }
         this.renderFullColor = color;
+    }
+
+    public void showSkillUnlock(ISkill<?> skill, boolean choice) {
+        currentSkillOverlay = new SkillUnlockOverlay(skill, choice);
     }
 
     @SubscribeEvent
@@ -303,5 +309,24 @@ public class VampirismHUDOverlay {
             RenderSystem.defaultBlendFunc();
         }
         RenderSystem.disableBlend();
+    }
+
+    @SubscribeEvent
+    public void onRenderSkillOverlay(RenderGuiLayerEvent.Post event) {
+        if (currentSkillOverlay != null) {
+            currentSkillOverlay.render(event.getGuiGraphics(), 0, 0, 0); // mouse не нужен
+            if (currentSkillOverlay.isDone()) {
+                currentSkillOverlay = null;
+            }
+        }
+    }
+
+    // Обработка ESC (добавьте в существующий ClientTick или отдельно)
+    @SubscribeEvent
+    public void onClientTick(ClientTickEvent.Post event) {  // или Pre
+        if (currentSkillOverlay != null && Minecraft.getInstance().screen == null) {
+            // Если нужно обработать клавиши без открытого экрана
+            // currentSkillOverlay.onKeyPressed(...) — вызовите из ScreenEvent.KeyPressed.Pre если хотите
+        }
     }
 }

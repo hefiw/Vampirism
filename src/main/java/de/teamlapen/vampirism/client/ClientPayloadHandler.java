@@ -2,6 +2,7 @@ package de.teamlapen.vampirism.client;
 
 import de.teamlapen.vampirism.VampirismMod;
 import de.teamlapen.vampirism.api.VampirismAPI;
+import de.teamlapen.vampirism.api.entity.player.skills.ISkill;
 import de.teamlapen.vampirism.api.entity.player.task.ITaskInstance;
 import de.teamlapen.vampirism.client.gui.screens.SelectMinionScreen;
 import de.teamlapen.vampirism.client.gui.screens.VampireBookScreen;
@@ -10,6 +11,7 @@ import de.teamlapen.vampirism.entity.SundamageRegistry;
 import de.teamlapen.vampirism.inventory.TaskBoardMenu;
 import de.teamlapen.vampirism.inventory.VampirismMenu;
 import de.teamlapen.vampirism.network.*;
+import de.teamlapen.vampirism.util.RegUtil;
 import de.teamlapen.vampirism.util.VampireBookManager;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.Screen;
@@ -38,6 +40,15 @@ public class ClientPayloadHandler {
                 case 2:
                     Minecraft.getInstance().getMusicManager().stopPlaying();
                     break;
+            }
+        });
+    }
+
+    public static void handleSkillUnlockedPacket(ClientboundSkillUnlockedPacket msg, IPayloadContext context) {
+        context.enqueueWork(() -> {
+            ISkill<?> skill = RegUtil.getSkill(msg.skillId()); // или как получаете skill по ID
+            if (skill != null) {
+                VampirismModClient.getINSTANCE().getOverlay().showSkillUnlock(skill, false); // false = обычный unlock
             }
         });
     }

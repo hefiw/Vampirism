@@ -1,6 +1,7 @@
 package de.teamlapen.vampirism.entity.player.skills;
 
 import de.teamlapen.lib.lib.storage.ISyncableSaveData;
+import de.teamlapen.vampirism.VampirismMod;
 import de.teamlapen.vampirism.api.VampirismRegistries;
 import de.teamlapen.vampirism.api.entity.factions.IFaction;
 import de.teamlapen.vampirism.api.entity.factions.IPlayableFaction;
@@ -20,6 +21,8 @@ import de.teamlapen.vampirism.core.ModRegistries;
 import de.teamlapen.vampirism.core.ModStats;
 import de.teamlapen.vampirism.data.ISkillTreeData;
 import de.teamlapen.vampirism.mixin.accessor.AttributeInstanceAccessor;
+import de.teamlapen.vampirism.network.ClientboundSkillUnlockedPacket;
+import de.teamlapen.vampirism.network.ModPacketDispatcher;
 import de.teamlapen.vampirism.util.RegUtil;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderLookup;
@@ -168,6 +171,8 @@ public class SkillHandler<T extends IFactionPlayer<T>> implements ISkillHandler<
             //noinspection ConstantValue
             if (this.player.asEntity() instanceof ServerPlayer serverPlayer && serverPlayer.connection != null) {
                 ModAdvancements.TRIGGER_SKILL_UNLOCKED.get().trigger(serverPlayer, skill);
+
+                if (serverPlayer.connection != null) {serverPlayer.connection.send(new ClientboundSkillUnlockedPacket(RegUtil.id(skill)));}
             }
         }
 

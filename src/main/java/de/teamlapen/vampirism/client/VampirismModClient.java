@@ -7,6 +7,7 @@ import de.teamlapen.vampirism.REFERENCE;
 import de.teamlapen.vampirism.VampirismMod;
 import de.teamlapen.vampirism.api.VampirismAPI;
 import de.teamlapen.vampirism.api.client.VIngameOverlays;
+import de.teamlapen.vampirism.api.entity.player.skills.ISkill;
 import de.teamlapen.vampirism.blocks.LogBlock;
 import de.teamlapen.vampirism.client.config.ModFilter;
 import de.teamlapen.vampirism.client.core.*;
@@ -76,6 +77,10 @@ public class VampirismModClient {
         }
 
         setupApi();
+    }
+
+    public void showSkillUnlock(ISkill<?> skill, boolean isChoice) {
+        this.overlay.showSkillUnlock(skill, isChoice);
     }
 
     @SubscribeEvent
