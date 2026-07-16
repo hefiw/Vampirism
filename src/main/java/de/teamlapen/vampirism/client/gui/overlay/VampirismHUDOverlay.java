@@ -11,6 +11,7 @@ import de.teamlapen.vampirism.api.entity.hunter.IHunterMob;
 import de.teamlapen.vampirism.api.entity.player.skills.ISkill;
 import de.teamlapen.vampirism.api.entity.vampire.IVampireMob;
 import de.teamlapen.vampirism.api.util.VResourceLocation;
+import de.teamlapen.vampirism.client.VampirismModClient;
 import de.teamlapen.vampirism.config.VampirismConfig;
 import de.teamlapen.vampirism.core.ModBlocks;
 import de.teamlapen.vampirism.core.ModEffects;
@@ -52,6 +53,8 @@ import org.jetbrains.annotations.NotNull;
 import org.joml.Matrix4f;
 
 import java.util.Optional;
+
+import static com.mojang.text2speech.Narrator.LOGGER;
 
 public class VampirismHUDOverlay {
 
@@ -95,6 +98,7 @@ public class VampirismHUDOverlay {
 
     public void showSkillUnlock(ISkill<?> skill, boolean choice) {
         currentSkillOverlay = new SkillUnlockOverlay(skill, choice);
+        LOGGER.info("Showing skill unlock overlay for: " + skill.getName().getString());
     }
 
     @SubscribeEvent
@@ -321,12 +325,12 @@ public class VampirismHUDOverlay {
         }
     }
 
-    // Обработка ESC (добавьте в существующий ClientTick или отдельно)
     @SubscribeEvent
-    public void onClientTick(ClientTickEvent.Post event) {  // или Pre
-        if (currentSkillOverlay != null && Minecraft.getInstance().screen == null) {
-            // Если нужно обработать клавиши без открытого экрана
-            // currentSkillOverlay.onKeyPressed(...) — вызовите из ScreenEvent.KeyPressed.Pre если хотите
+    public void onKeyInput(net.neoforged.neoforge.client.event.InputEvent.Key event) {
+        if (VampirismModClient.getINSTANCE().getOverlay().currentSkillOverlay != null) {
+            if (event.getKey() == 256 && event.getAction() == 1) { // ESC pressed
+                VampirismModClient.getINSTANCE().getOverlay().currentSkillOverlay.onKeyPressed(256);
+            }
         }
     }
 }

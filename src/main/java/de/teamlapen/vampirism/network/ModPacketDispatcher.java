@@ -27,6 +27,7 @@ public class ModPacketDispatcher {
         registrar.playToClient(ClientboundSundamagePacket.TYPE, ClientboundSundamagePacket.CODEC, (msg, context) -> ClientPayloadHandler.handleSundamageData(msg, context));
         registrar.playToClient(ClientboundBossEventSoundPacket.TYPE, ClientboundBossEventSoundPacket.CODEC, (msg, context) -> ClientPayloadHandler.handleBossEventSound(msg, context));
         registrar.playToClient(ClientboundSkillTreePacket.TYPE, ClientboundSkillTreePacket.CODEC, (msg, context) -> ClientPayloadHandler.handleSkillTreePacket(msg, context));
+        registrar.playToClient(ClientboundSkillUnlockedPacket.TYPE, ClientboundSkillUnlockedPacket.CODEC, (msg, context) -> ClientPayloadHandler.handleSkillUnlockedPacket(msg, context));
 
         registrar.playToServer(ServerboundSelectMinionTaskPacket.TYPE, ServerboundSelectMinionTaskPacket.CODEC, (msg, context) -> ServerPayloadHandler.getInstance().handleSelectMinionTaskPacket(msg, context));
         registrar.playToServer(ServerboundAppearancePacket.TYPE, ServerboundAppearancePacket.CODEC, (msg, context) -> ServerPayloadHandler.getInstance().handleAppearancePacket(msg, context));

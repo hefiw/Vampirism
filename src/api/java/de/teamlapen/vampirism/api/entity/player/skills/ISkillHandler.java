@@ -35,6 +35,8 @@ public interface ISkillHandler<T extends IFactionPlayer<T>> {
      */
     void disableSkill(ISkill<T> skill);
 
+    void autoUnlockNextSkill();
+
     /**
      * Enable the given skill. Check canSkillBeEnabled first
      */

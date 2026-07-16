@@ -10,11 +10,13 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import org.jetbrains.annotations.NotNull;
 
+import static com.mojang.text2speech.Narrator.LOGGER;
+
 public class SkillUnlockOverlay implements Renderable {
     private final ISkill<?> skill;
     private final Component title;
     private final Component description;
-    private int displayTime = 200;
+    private int displayTime = 20000;
     private boolean choiceMode = false;
 
     public SkillUnlockOverlay(ISkill<?> skill, boolean choiceMode) {
@@ -22,7 +24,7 @@ public class SkillUnlockOverlay implements Renderable {
         this.title = skill.getName();
         this.description = skill.getDescription() != null ? skill.getDescription() : Component.empty();
         this.choiceMode = choiceMode;
-        this.displayTime = choiceMode ? Integer.MAX_VALUE : 200;
+        this.displayTime = choiceMode ? Integer.MAX_VALUE : 20000;
     }
 
     @Override
@@ -37,7 +39,7 @@ public class SkillUnlockOverlay implements Renderable {
         int y = h / 2 - 90;
 
         // Фон
-        graphics.fill(x - 5, y - 5, x + 225, y + 175, 0xCC111111);
+        graphics.fill(x - 5, y - 5, x + 225, y + 175, 0x40000000);
         graphics.fill(x, y, x + 220, y + 170, 0xAA000000);
 
         // Название золотым с glow
@@ -50,7 +52,7 @@ public class SkillUnlockOverlay implements Renderable {
         }
 
         // Иконка — исправлено (используем подход из SkillNodeScreen)
-        ResourceLocation icon = VResourceLocation.mod("textures/gui/skills/" + getSkillIconPath(skill) + ".png");
+        ResourceLocation icon = VResourceLocation.mod("textures/skills/" + getSkillIconPath(skill) + ".png");
         graphics.blit(icon, x + 85, y + 50, 0, 0, 32, 32, 32, 32);
 
         // Описание

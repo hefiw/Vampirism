@@ -731,6 +731,11 @@ public class VampirePlayer extends FactionBasePlayer<IVampirePlayer> implements 
                 this.vision.deactivate();
                 this.sync(true);
             }
+
+            // === НОВОЕ: Авто-разблокировка навыка + оверлей ===
+            if (newLevel > oldLevel) {
+                getSkillHandler().autoUnlockNextSkill();
+            }
         } else {
             if (oldLevel == 0) {
                 if (player.hasEffect(MobEffects.NIGHT_VISION)) {

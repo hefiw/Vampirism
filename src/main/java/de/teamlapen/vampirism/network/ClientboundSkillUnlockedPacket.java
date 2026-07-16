@@ -8,7 +8,7 @@ import net.minecraft.resources.ResourceLocation;
 
 public record ClientboundSkillUnlockedPacket(ResourceLocation skillId) implements CustomPacketPayload {
     public static final Type<ClientboundSkillUnlockedPacket> TYPE = new Type<>(VResourceLocation.mod("skill_unlocked"));
-    public static final StreamCodec<ByteBuf, ClientboundSkillUnlockedPacket> STREAM_CODEC =
+    public static final StreamCodec<ByteBuf, ClientboundSkillUnlockedPacket> CODEC =
             ResourceLocation.STREAM_CODEC.map(ClientboundSkillUnlockedPacket::new, ClientboundSkillUnlockedPacket::skillId);
 
     @Override

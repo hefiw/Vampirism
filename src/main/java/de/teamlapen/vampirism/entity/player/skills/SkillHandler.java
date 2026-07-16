@@ -64,6 +64,36 @@ public class SkillHandler<T extends IFactionPlayer<T>> implements ISkillHandler<
     private boolean dirty = false;
     private final ISkillTreeData treeData;
 
+    private Optional<ISkill<T>> findNextUnlockableSkill() {
+        for (Holder<ISkillTree> treeHolder : unlockedTrees) {
+            SkillTreeConfiguration.SkillTreeNodeConfiguration root = this.treeData.root(treeHolder);
+            // Рекурсивный обход дерева (упрощённо — можно улучшить)
+            Optional<ISkill<T>> found = findUnlockableInNode(root);
+            if (found.isPresent()) {
+                return found;
+            }
+        }
+        return Optional.empty();
+    }
+
+    private Optional<ISkill<T>> findUnlockableInNode(SkillTreeConfiguration.SkillTreeNodeConfiguration node) {
+        for (Holder<ISkill<?>> holder : node.elements()) {
+            ISkill<T> skill = (ISkill<T>) holder.value();
+            if (canSkillBeEnabled(skill) == Result.OK) {
+                return Optional.of(skill);
+            }
+        }
+
+        // Рекурсия по детям
+        for (SkillTreeConfiguration.SkillTreeNodeConfiguration child : node.children()) {
+            Optional<ISkill<T>> found = findUnlockableInNode(child);
+            if (found.isPresent()) {
+                return found;
+            }
+        }
+        return Optional.empty();
+    }
+
     public SkillHandler(T player, IPlayableFaction<T> faction) {
         this.player = player;
         this.faction = faction;
@@ -149,6 +179,18 @@ public class SkillHandler<T extends IFactionPlayer<T>> implements ISkillHandler<
         }
         enabledSkills.removeAll(skills);
         dirty = true;
+    }
+
+    public void autoUnlockNextSkill() {
+        // Найти первый доступный навык
+        for (Holder<ISkillTree> tree : unlockedTrees) {
+            // логика поиска следующего узла (используйте treeData)
+            Optional<ISkill<T>> nextSkill = findNextUnlockableSkill();
+            if (nextSkill.isPresent()) {
+                enableSkill(nextSkill.get(), false);
+                return;
+            }
+        }
     }
 
     @Override
