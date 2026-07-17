@@ -19,7 +19,9 @@ import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.network.handling.IPayloadContext;
 
+import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class ClientPayloadHandler {
 
@@ -49,6 +51,19 @@ public class ClientPayloadHandler {
             ISkill<?> skill = RegUtil.getSkill(msg.skillId()); // или как получаете skill по ID
             if (skill != null) {
                 VampirismModClient.getINSTANCE().getOverlay().showSkillUnlock(skill, false); // false = обычный unlock
+            }
+        });
+    }
+
+    public static void handleSkillChoicePacket(ClientboundSkillChoicePacket msg, IPayloadContext context) {
+        context.enqueueWork(() -> {
+            List<ISkill<?>> skills = msg.skillIds().stream()
+                    .map(RegUtil::getSkill)
+                    .filter(java.util.Objects::nonNull)
+                    .collect(Collectors.toList());
+
+            if (!skills.isEmpty()) {
+                VampirismModClient.getINSTANCE().getOverlay().showSkillChoice(skills);
             }
         });
     }

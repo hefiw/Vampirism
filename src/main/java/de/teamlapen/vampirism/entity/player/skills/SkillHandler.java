@@ -15,12 +15,14 @@ import de.teamlapen.vampirism.api.entity.player.skills.ISkillHandler;
 import de.teamlapen.vampirism.api.entity.player.skills.ISkillPointProvider;
 import de.teamlapen.vampirism.api.entity.player.skills.SkillPointProviders;
 import de.teamlapen.vampirism.api.items.IRefinementItem;
+import de.teamlapen.vampirism.client.VampirismModClient;
 import de.teamlapen.vampirism.core.ModAdvancements;
 import de.teamlapen.vampirism.core.ModEffects;
 import de.teamlapen.vampirism.core.ModRegistries;
 import de.teamlapen.vampirism.core.ModStats;
 import de.teamlapen.vampirism.data.ISkillTreeData;
 import de.teamlapen.vampirism.mixin.accessor.AttributeInstanceAccessor;
+import de.teamlapen.vampirism.network.ClientboundSkillChoicePacket;
 import de.teamlapen.vampirism.network.ClientboundSkillUnlockedPacket;
 import de.teamlapen.vampirism.network.ModPacketDispatcher;
 import de.teamlapen.vampirism.util.RegUtil;
@@ -182,15 +184,67 @@ public class SkillHandler<T extends IFactionPlayer<T>> implements ISkillHandler<
     }
 
     public void autoUnlockNextSkill() {
-        // Найти первый доступный навык
-        for (Holder<ISkillTree> tree : unlockedTrees) {
-            // логика поиска следующего узла (используйте treeData)
-            Optional<ISkill<T>> nextSkill = findNextUnlockableSkill();
-            if (nextSkill.isPresent()) {
-                enableSkill(nextSkill.get(), false);
-                return;
+        Optional<SkillTreeConfiguration.SkillTreeNodeConfiguration> nodeOpt = findNextUnlockableNode();
+
+        if (nodeOpt.isPresent()) {
+            SkillTreeConfiguration.SkillTreeNodeConfiguration node = nodeOpt.get();
+            List<ISkill<T>> availableSkills = node.elements().stream()
+                    .map(Holder::value)
+                    .map(s -> (ISkill<T>) s)
+                    .filter(skill -> canSkillBeEnabled(skill) == Result.OK)
+                    .collect(Collectors.toList());
+
+            if (availableSkills.isEmpty()) return;
+
+            if (availableSkills.size() > 1) {
+                LOGGER.info("Branching node detected with {} options", availableSkills.size());
+
+                List<ResourceLocation> skillIds = availableSkills.stream()
+                        .map(RegUtil::id)
+                        .toList();
+
+                if (player.asEntity() instanceof ServerPlayer serverPlayer) {
+                    serverPlayer.connection.send(new ClientboundSkillChoicePacket(skillIds));
+                }
+            } else {
+                enableSkill(availableSkills.get(0), false);
             }
         }
+    }
+
+    /**
+     * Находит следующий узел, в котором есть хотя бы один разблокируемый навык
+     */
+    private Optional<SkillTreeConfiguration.SkillTreeNodeConfiguration> findNextUnlockableNode() {
+        for (Holder<ISkillTree> treeHolder : unlockedTrees) {
+            SkillTreeConfiguration.SkillTreeNodeConfiguration root = this.treeData.root(treeHolder);
+            Optional<SkillTreeConfiguration.SkillTreeNodeConfiguration> found = findUnlockableNode(root);
+            if (found.isPresent()) {
+                return found;
+            }
+        }
+        return Optional.empty();
+    }
+
+    private Optional<SkillTreeConfiguration.SkillTreeNodeConfiguration> findUnlockableNode(SkillTreeConfiguration.SkillTreeNodeConfiguration node) {
+        // Проверяем текущий узел
+        boolean hasUnlockable = node.elements().stream()
+                .map(Holder::value)
+                .map(s -> (ISkill<T>) s)
+                .anyMatch(skill -> canSkillBeEnabled(skill) == Result.OK);
+
+        if (hasUnlockable) {
+            return Optional.of(node);
+        }
+
+        // Рекурсия по детям
+        for (SkillTreeConfiguration.SkillTreeNodeConfiguration child : node.children()) {
+            Optional<SkillTreeConfiguration.SkillTreeNodeConfiguration> found = findUnlockableNode(child);
+            if (found.isPresent()) {
+                return found;
+            }
+        }
+        return Optional.empty();
     }
 
     @Override

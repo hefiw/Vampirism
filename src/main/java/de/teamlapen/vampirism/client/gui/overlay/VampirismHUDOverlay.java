@@ -8,6 +8,7 @@ import de.teamlapen.lib.lib.util.FluidLib;
 import de.teamlapen.vampirism.api.entity.IBiteableEntity;
 import de.teamlapen.vampirism.api.entity.IExtendedCreatureVampirism;
 import de.teamlapen.vampirism.api.entity.hunter.IHunterMob;
+import de.teamlapen.vampirism.api.entity.player.IFactionPlayer;
 import de.teamlapen.vampirism.api.entity.player.skills.ISkill;
 import de.teamlapen.vampirism.api.entity.vampire.IVampireMob;
 import de.teamlapen.vampirism.api.util.VResourceLocation;
@@ -46,12 +47,14 @@ import net.neoforged.bus.api.EventPriority;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.client.event.ClientTickEvent;
+import net.neoforged.neoforge.client.event.InputEvent;
 import net.neoforged.neoforge.client.event.RenderGuiEvent;
 import net.neoforged.neoforge.client.event.RenderGuiLayerEvent;
 import net.neoforged.neoforge.client.gui.VanillaGuiLayers;
 import org.jetbrains.annotations.NotNull;
 import org.joml.Matrix4f;
 
+import java.util.List;
 import java.util.Optional;
 
 import static com.mojang.text2speech.Narrator.LOGGER;
@@ -66,7 +69,8 @@ public class VampirismHUDOverlay {
     public static final ResourceLocation FANG_SPRITE = VResourceLocation.mod("fang/fang");
     public static final ResourceLocation PROGRESS_BACKGROUND_SPRITE = VResourceLocation.mod("fang/progress_background");
     public static final ResourceLocation PROGRESS_FOREGROUND_SPRITE = VResourceLocation.mod("fang/progress_foreground");
-    private SkillUnlockOverlay currentSkillOverlay;
+    public SkillUnlockOverlay currentSkillOverlay;
+    public SkillChoiceOverlay currentChoiceOverlay;
 
     private int screenColor = 0;
     private int screenPercentage = 0;
@@ -77,6 +81,18 @@ public class VampirismHUDOverlay {
 
     public VampirismHUDOverlay(Minecraft mc) {
         this.mc = mc;
+    }
+
+    public void showSkillUnlock(ISkill<?> skill, boolean choice) {
+        currentSkillOverlay = new SkillUnlockOverlay(skill);
+        currentChoiceOverlay = null;
+        LOGGER.info("Showing SINGLE skill unlock overlay: " + skill.getName().getString());
+    }
+
+    public void showSkillChoice(List<ISkill<?>> skills) {
+        currentChoiceOverlay = new SkillChoiceOverlay(skills);
+        currentSkillOverlay = null;
+        LOGGER.info("Showing CHOICE overlay with " + skills.size() + " skills");
     }
 
     /**
@@ -96,9 +112,17 @@ public class VampirismHUDOverlay {
         this.renderFullColor = color;
     }
 
-    public void showSkillUnlock(ISkill<?> skill, boolean choice) {
-        currentSkillOverlay = new SkillUnlockOverlay(skill, choice);
-        LOGGER.info("Showing skill unlock overlay for: " + skill.getName().getString());
+    @SubscribeEvent
+    public void onMouseClicked(InputEvent.MouseButton.Pre event) {
+        if (currentChoiceOverlay != null && event.getButton() == 0) {
+            Minecraft mc = Minecraft.getInstance();
+            double guiX = mc.mouseHandler.xpos() * mc.getWindow().getGuiScaledWidth() / mc.getWindow().getScreenWidth();
+            double guiY = mc.mouseHandler.ypos() * mc.getWindow().getGuiScaledHeight() / mc.getWindow().getScreenHeight();
+
+            if (currentChoiceOverlay.mouseClicked(guiX, guiY)) {currentChoiceOverlay = null;
+                event.setCanceled(true);
+            }
+        }
     }
 
     @SubscribeEvent
@@ -323,14 +347,23 @@ public class VampirismHUDOverlay {
                 currentSkillOverlay = null;
             }
         }
+
+        if (currentChoiceOverlay != null) {
+            currentChoiceOverlay.render(event.getGuiGraphics(),
+                    (int) mc.mouseHandler.xpos() * mc.getWindow().getGuiScaledWidth() / mc.getWindow().getWidth(),
+                    (int) mc.mouseHandler.ypos() * mc.getWindow().getGuiScaledHeight() / mc.getWindow().getHeight(),
+                    0);
+
+            if (currentChoiceOverlay.isDone()) {
+                currentChoiceOverlay = null;
+            }
+        }
     }
 
     @SubscribeEvent
     public void onKeyInput(net.neoforged.neoforge.client.event.InputEvent.Key event) {
-        if (VampirismModClient.getINSTANCE().getOverlay().currentSkillOverlay != null) {
-            if (event.getKey() == 256 && event.getAction() == 1) { // ESC pressed
-                VampirismModClient.getINSTANCE().getOverlay().currentSkillOverlay.onKeyPressed(256);
-            }
+        if (currentSkillOverlay != null && event.getKey() == 256 && event.getAction() == 1) {
+            currentSkillOverlay.onKeyPressed(256);
         }
     }
 }

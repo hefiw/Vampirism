@@ -10,26 +10,20 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import org.jetbrains.annotations.NotNull;
 
-import static com.mojang.text2speech.Narrator.LOGGER;
-
 public class SkillUnlockOverlay implements Renderable {
     private final ISkill<?> skill;
     private final Component title;
-    private final Component description;
     private int displayTime = 20000;
-    private boolean choiceMode = false;
+    private boolean done = false;
 
-    public SkillUnlockOverlay(ISkill<?> skill, boolean choiceMode) {
+    public SkillUnlockOverlay(ISkill<?> skill) {
         this.skill = skill;
         this.title = skill.getName();
-        this.description = skill.getDescription() != null ? skill.getDescription() : Component.empty();
-        this.choiceMode = choiceMode;
-        this.displayTime = choiceMode ? Integer.MAX_VALUE : 20000;
     }
 
     @Override
     public void render(@NotNull GuiGraphics graphics, int mouseX, int mouseY, float partialTick) {
-        if (displayTime <= 0 && !choiceMode) return;
+        if (done || displayTime <= 0) return;
 
         Minecraft mc = Minecraft.getInstance();
         int w = mc.getWindow().getGuiScaledWidth();
@@ -39,8 +33,7 @@ public class SkillUnlockOverlay implements Renderable {
         int y = h / 2 - 90;
 
         // Фон
-        graphics.fill(x - 5, y - 5, x + 225, y + 175, 0x40000000);
-        graphics.fill(x, y, x + 220, y + 170, 0xAA000000);
+        graphics.fill(x - 5, y - 5, x + 225, y + 175, 0x07000000);
 
         // Название золотым с glow
         int tx = w / 2;
@@ -56,19 +49,16 @@ public class SkillUnlockOverlay implements Renderable {
         graphics.blit(icon, x + 85, y + 50, 0, 0, 32, 32, 32, 32);
 
         // Описание
-        graphics.drawWordWrap(mc.font, description, x + 25, y + 105, 180, 0xFFEEEEEE);
-
-        if (choiceMode) {
-            graphics.drawCenteredString(mc.font, Component.translatable("text.vampirism.skill.choose_branch"), tx, y + 145, 0xFFFFFF55);
-        }
+        Component desc = skill.getDescription() != null ? skill.getDescription() : Component.empty();
+        graphics.drawWordWrap(mc.font, desc, x + 25, y + 105, 180, 0xFFEEEEEE);
 
         displayTime--;
     }
 
     private String getSkillIconPath(ISkill<?> skill) {
-        // Безопасный fallback, так как getRegistryName() отсутствует в интерфейсе
-        String id = skill.getTranslationKey().replace("skill.", "").replace(".", "_");
-        return id;
+        String key = skill.getTranslationKey();
+        key = key.replace("skill.vampirism.", "").replace("skill.", "").replace(".", "_");
+        return key;
     }
 
     public boolean onKeyPressed(int keyCode) {
@@ -79,7 +69,11 @@ public class SkillUnlockOverlay implements Renderable {
         return false;
     }
 
+    public void setDone() {
+        done = true;
+    }
+
     public boolean isDone() {
-        return displayTime <= 0 && !choiceMode;
+        return done || displayTime <= 0;
     }
 }
