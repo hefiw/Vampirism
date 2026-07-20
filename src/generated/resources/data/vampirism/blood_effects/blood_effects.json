@@ -1,4 +1,18 @@
 {
+  "minecraft:guardian": [
+    {
+      "effect": "minecraft:water_breathing",
+      "duration": 100,
+      "amplifier": 0
+    }
+  ],
+  "minecraft:elder_guardian": [
+    {
+      "effect": "minecraft:water_breathing",
+      "duration": 200,
+      "amplifier": 0
+    }
+  ],
   "minecraft:zombie": [
     {
       "effect": "minecraft:poison",
@@ -6,10 +20,528 @@
       "amplifier": 0
     }
   ],
-  "minecraft:blaze": [
+  "minecraft:zombie_horse": [
     {
-      "effect": "minecraft:fire_resistance",
+      "effect": "minecraft:poison",
+      "duration": 300,
+      "amplifier": 0
+    }
+  ],
+  "minecraft:zombie_villager": [
+    {
+      "effect": "minecraft:poison",
+      "duration": 300,
+      "amplifier": 0
+    }
+  ],
+  "minecraft:husk": [
+    {
+      "effect": "minecraft:poison",
+      "duration": 300,
+      "amplifier": 0
+    }
+  ],
+  "minecraft:drowned": [
+    {
+      "effect": "minecraft:water_breathing",
+      "duration": 100,
+      "amplifier": 0
+    },
+    {
+      "effect": "minecraft:poison",
+      "duration": 300,
+      "amplifier": 0
+    }
+  ],
+  "minecraft:glow_squid": [
+    {
+      "effect": "minecraft:water_breathing",
+      "duration": 100,
+      "amplifier": 0
+    },
+    {
+      "effect": "minecraft:glowing",
+      "duration": 100,
+      "amplifier": 0
+    }
+  ],
+  "minecraft:cave_spider": [
+    {
+      "effect": "minecraft:poison",
       "duration": 400,
+      "amplifier": 0
+    }
+  ],
+  "minecraft:silverfish": [
+    {
+      "effect": "minecraft:infested",
+      "duration": 4000,
+      "amplifier": 0
+    }
+  ],
+  "minecraft:phantom": [
+    {
+      "effect": "minecraft:slow_falling",
+      "duration": 300,
+      "amplifier": 0
+    }
+  ],
+  "minecraft:warden": [
+    {
+      "effect": "minecraft:blindness",
+      "duration": 2000,
+      "amplifier": 0
+    }
+  ],
+
+  "netherman:guardian": [
+    {
+      "effect": "born_in_chaos_v1:infernal_flame",
+      "duration": 200,
+      "amplifier": 0
+    }
+  ],
+
+  "quark:foxhound": [
+    {
+      "effect": "born_in_chaos_v1:infernal_flame",
+      "duration": 200,
+      "amplifier": 0
+    }
+  ],
+
+  "createnuclear:wolf_irradiated": [
+    {
+      "effect": "createnuclear:radiation",
+      "duration": 1000,
+      "amplifier": 0
+    }
+  ],
+  "createnuclear:cat_irradiated": [
+    {
+      "effect": "createnuclear:radiation",
+      "duration": 1000,
+      "amplifier": 0
+    }
+  ],
+  "createnuclear:chicken_irradiated": [
+    {
+      "effect": "createnuclear:radiation",
+      "duration": 1000,
+      "amplifier": 0
+    }
+  ],
+
+  "kobolds:kobold_zombie": [
+    {
+      "effect": "minecraft:poison",
+      "duration": 300,
+      "amplifier": 0
+    }
+  ],
+
+  "northstar:frozen_zombie": [
+    {
+      "effect": "minecraft:poison",
+      "duration": 300,
+      "amplifier": 0
+    },
+    {
+      "effect": "iceandfire:frozen",
+      "duration": 300,
+      "amplifier": 0
+    }
+  ],
+
+  "iceandfire:fire_dragon": [
+    {
+      "effect": "born_in_chaos_v1:infernal_flame",
+      "duration": 10000,
+      "amplifier": 4
+    }
+  ],
+  "iceandfire:ice_dragon": [
+    {
+      "effect": "iceandfire:frozen",
+      "duration": 1000,
+      "amplifier": 1
+    }
+  ],
+  "iceandfire:lightning_dragon": [
+    {
+      "effect": "born_in_chaos_v1:infernal_flame",
+      "duration": 10000,
+      "amplifier": 2
+    }
+  ],
+  "iceandfire:pixie": [
+    {
+      "effect": "minecraft:levitation",
+      "duration": 100,
+      "amplifier": 2
+    }
+  ],
+  "iceandfire:dread_ghoul": [
+    {
+      "effect": "minecraft:poison",
+      "duration": 300,
+      "amplifier": 0
+    }
+  ],
+  "iceandfire:dread_beast": [
+    {
+      "effect": "minecraft:poison",
+      "duration": 300,
+      "amplifier": 0
+    }
+  ],
+  "iceandfire:dread_scuttler": [
+    {
+      "effect": "minecraft:poison",
+      "duration": 300,
+      "amplifier": 0
+    }
+  ],
+  "iceandfire:hydra": [
+    {
+      "effect": "minecraft:poison",
+      "duration": 10000,
+      "amplifier": 0
+    }
+  ],
+  "iceandfire:hippocampus": [
+    {
+      "effect": "minecraft:water_breathing",
+      "duration": 100,
+      "amplifier": 0
+    }
+  ],
+  "iceandfire:cockatrice": [
+    {
+      "effect": "minecraft:wither",
+      "duration": 200,
+      "amplifier": 0
+    }
+  ],
+
+  "occultism:possessed_elder_guardian": [
+    {
+      "effect": "minecraft:water_breathing",
+      "duration": 200,
+      "amplifier": 0
+    }
+  ],
+  "occultism:possessed_phantom": [
+    {
+      "effect": "minecraft:slow_falling",
+      "duration": 300,
+      "amplifier": 0
+    }
+  ],
+  "occultism:possessed_warden": [
+    {
+      "effect": "minecraft:blindness",
+      "duration": 2000,
+      "amplifier": 0
+    }
+  ],
+
+  "aether:cockatrice": [
+    {
+      "effect": "minecraft:wither",
+      "duration": 200,
+      "amplifier": 0
+    }
+  ],
+
+  "alexmobs:laviathan": [
+    {
+      "effect": "born_in_chaos_v1:infernal_flame",
+      "duration": 5000,
+      "amplifier": 2
+    }
+  ],
+  "alexmobs:sunbird": [
+    {
+      "effect": "born_in_chaos_v1:infernal_flame",
+      "duration": 5000,
+      "amplifier": 2
+    }
+  ],
+
+  "royalvariations:royal_zombie": [
+    {
+      "effect": "minecraft:poison",
+      "duration": 3000,
+      "amplifier": 0
+    }
+  ],
+
+  "born_in_chaos_v1:maggot": [
+    {
+      "effect": "minecraft:poison",
+      "duration": 100,
+      "amplifier": 0
+    }
+  ],
+  "born_in_chaos_v1:corpse_fly": [
+    {
+      "effect": "minecraft:poison",
+      "duration": 100,
+      "amplifier": 0
+    }
+  ],
+  "born_in_chaos_v1:bloody_gadfly": [
+    {
+      "effect": "minecraft:poison",
+      "duration": 100,
+      "amplifier": 0
+    }
+  ],
+  "born_in_chaos_v1:swarmer": [
+    {
+      "effect": "minecraft:poison",
+      "duration": 100,
+      "amplifier": 0
+    }
+  ],
+  "born_in_chaos_v1:firelight": [
+    {
+      "effect": "born_in_chaos_v1:infernal_flame",
+      "duration": 100,
+      "amplifier": 0
+    }
+  ],
+  "born_in_chaos_v1:mother_spider": [
+    {
+      "effect": "minecraft:poison",
+      "duration": 200,
+      "amplifier": 0
+    }
+  ],
+  "born_in_chaos_v1:baby_spider": [
+    {
+      "effect": "minecraft:poison",
+      "duration": 100,
+      "amplifier": 0
+    }
+  ],
+  "born_in_chaos_v1:door_knight": [
+    {
+      "effect": "minecraft:poison",
+      "duration": 100,
+      "amplifier": 0
+    }
+  ],
+  "born_in_chaos_v1:zombie_bruiser": [
+    {
+      "effect": "minecraft:poison",
+      "duration": 100,
+      "amplifier": 0
+    }
+  ],
+  "born_in_chaos_v1:zombie_lumberjack": [
+    {
+      "effect": "minecraft:poison",
+      "duration": 100,
+      "amplifier": 0
+    }
+  ],
+  "born_in_chaos_v1:zombie_fisherman": [
+    {
+      "effect": "minecraft:poison",
+      "duration": 100,
+      "amplifier": 0
+    }
+  ],
+  "born_in_chaos_v1:zombie_clown": [
+    {
+      "effect": "minecraft:poison",
+      "duration": 100,
+      "amplifier": 0
+    }
+  ],
+  "born_in_chaos_v1:decaying_zombie": [
+    {
+      "effect": "minecraft:poison",
+      "duration": 100,
+      "amplifier": 0
+    }
+  ],
+  "born_in_chaos_v1:barrel_zombie": [
+    {
+      "effect": "minecraft:poison",
+      "duration": 100,
+      "amplifier": 0
+    }
+  ],
+  "born_in_chaos_v1:pumpkin_bruiser": [
+    {
+      "effect": "minecraft:poison",
+      "duration": 100,
+      "amplifier": 0
+    }
+  ],
+
+  "deeperdarker:angler_fish": [
+    {
+      "effect": "minecraft:blindness",
+      "duration": 2000,
+      "amplifier": 0
+    }
+  ],
+  "deeperdarker:sculk_centipede": [
+    {
+      "effect": "minecraft:blindness",
+      "duration": 2000,
+      "amplifier": 0
+    }
+  ],
+  "deeperdarker:sculk_leech": [
+    {
+      "effect": "minecraft:blindness",
+      "duration": 2000,
+      "amplifier": 0
+    }
+  ],
+  "deeperdarker:sculk_snapper": [
+    {
+      "effect": "minecraft:blindness",
+      "duration": 2000,
+      "amplifier": 0
+    }
+  ],
+  "deeperdarker:shattered": [
+    {
+      "effect": "minecraft:blindness",
+      "duration": 2000,
+      "amplifier": 0
+    }
+  ],
+  "deeperdarker:shriek_worm": [
+    {
+      "effect": "minecraft:blindness",
+      "duration": 2000,
+      "amplifier": 0
+    }
+  ],
+
+  "alexscaves:luxtructosaurus": [
+    {
+      "effect": "born_in_chaos_v1:infernal_flame",
+      "duration": 10000,
+      "amplifier": 4
+    }
+  ],
+  "alexscaves:radgill": [
+    {
+      "effect": "alexscaves:irradiated",
+      "duration": 300,
+      "amplifier": 1
+    }
+  ],
+  "alexscaves:tremorzilla": [
+    {
+      "effect": "alexscaves:irradiated",
+      "duration": 500,
+      "amplifier": 3
+    }
+  ],
+  "alexscaves:brainiac": [
+    {
+      "effect": "alexscaves:irradiated",
+      "duration": 300,
+      "amplifier": 1
+    }
+  ],
+  "alexscaves:raycat": [
+    {
+      "effect": "alexscaves:irradiated",
+      "duration": 300,
+      "amplifier": 1
+    }
+  ],
+
+  "occultism:possessed_guardian": [
+    {
+      "effect": "minecraft:water_breathing",
+      "duration": 100,
+      "amplifier": 0
+    }
+  ],
+  "occultism:possessed_blaze": [
+    {
+      "effect": "born_in_chaos_v1:infernal_flame",
+      "duration": 100,
+      "amplifier": 0
+    }
+  ],
+  "occultism:wild_horde_drowned": [
+    {
+      "effect": "minecraft:water_breathing",
+      "duration": 100,
+      "amplifier": 0
+    },
+    {
+      "effect": "minecraft:poison",
+      "duration": 300,
+      "amplifier": 0
+    }
+  ],
+  "occultism:wild_horde_silverfish": [
+    {
+      "effect": "minecraft:infested",
+      "duration": 4000,
+      "amplifier": 0
+    }
+  ],
+  "occultism:wild_horde_husk": [
+    {
+      "effect": "minecraft:poison",
+      "duration": 300,
+      "amplifier": 0
+    }
+  ],
+
+  "galosphere:preserved": [
+    {
+      "effect": "minecraft:poison",
+      "duration": 300,
+      "amplifier": 0
+    }
+  ],
+
+  "sculks_of_arda:radioactive_warden": [
+    {
+      "effect": "minecraft:blindness",
+      "duration": 300,
+      "amplifier": 0
+    },
+    {
+      "effect": "alexscaves:irradiated",
+      "duration": 300,
+      "amplifier": 1
+    }
+  ],
+  "sculks_of_arda:sculk_fish": [
+    {
+      "effect": "minecraft:blindness",
+      "duration": 300,
+      "amplifier": 0
+    }
+  ],
+  "sculks_of_arda:sculk_fox": [
+    {
+      "effect": "minecraft:blindness",
+      "duration": 300,
+      "amplifier": 0
+    }
+  ],
+  
+  "witchery:demon": [
+    {
+      "effect": "born_in_chaos_v1:infernal_flame",
+      "duration": 3000,
       "amplifier": 0
     }
   ]

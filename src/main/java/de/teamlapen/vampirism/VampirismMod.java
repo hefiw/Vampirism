@@ -19,6 +19,7 @@ import de.teamlapen.vampirism.api.util.VResourceLocation;
 import de.teamlapen.vampirism.blockentity.PotionTableBlockEntity;
 import de.teamlapen.vampirism.client.VampirismModClient;
 import de.teamlapen.vampirism.client.renderer.VampirismClientEntityRegistry;
+import de.teamlapen.vampirism.config.HostileToVampireConfig;
 import de.teamlapen.vampirism.config.VampirismConfig;
 import de.teamlapen.vampirism.core.*;
 import de.teamlapen.vampirism.data.reloadlistener.BloodEffectReloadListener;
@@ -35,6 +36,7 @@ import de.teamlapen.vampirism.entity.factions.FactionRegistry;
 import de.teamlapen.vampirism.entity.minion.HunterMinionEntity;
 import de.teamlapen.vampirism.entity.minion.VampireMinionEntity;
 import de.teamlapen.vampirism.entity.minion.management.MinionData;
+import de.teamlapen.vampirism.entity.player.AutoSkillUnlockHandler;
 import de.teamlapen.vampirism.entity.player.ModPlayerEventHandler;
 import de.teamlapen.vampirism.entity.player.actions.ActionManager;
 import de.teamlapen.vampirism.entity.player.hunter.HunterPlayer;
@@ -71,6 +73,7 @@ import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.event.lifecycle.*;
 import net.neoforged.fml.loading.FMLEnvironment;
+import net.neoforged.fml.loading.FMLPaths;
 import net.neoforged.neoforge.attachment.AttachmentType;
 import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.capabilities.ICapabilityProvider;
@@ -294,6 +297,9 @@ public class VampirismMod {
 
         NeoForge.EVENT_BUS.register(new ModPlayerEventHandler());
         NeoForge.EVENT_BUS.register(new ModEntityEventHandler());
+        NeoForge.EVENT_BUS.register(new AutoSkillUnlockHandler());
+        NeoForge.EVENT_BUS.register(new ModdedMobVampireHandler());
+        HostileToVampireConfig.load(FMLPaths.CONFIGDIR.get());
 
         SupporterManager.init();
         VampireBookManager.getInstance().init();

@@ -2,6 +2,688 @@
   "values": {
     "minecraft:skeleton_horse": {
       "blood": 0
+    },
+    "minecraft:bogged": {
+      "blood": 0
+    },
+    "minecraft:stray": {
+      "blood": 0
+    },
+    "minecraft:skeleton": {
+      "blood": 0
+    },
+    "minecraft:iron_golem": {
+      "blood": 0
+    },
+    "minecraft:magma_cube": {
+      "blood": 0
+    },
+    "minecraft:enderman": {
+      "blood": 0
+    },
+    "minecraft:endermite": {
+      "blood": 0
+    },
+    "minecraft:creeper": {
+      "blood": 0
+    },
+    "minecraft:allay": {
+      "blood": 0
+    },
+    "minecraft:blaze": {
+      "blood": 0
+    },
+    "minecraft:breeze": {
+      "blood": 0
+    },
+    "minecraft:vex": {
+      "blood": 0
+    },
+    "minecraft:snow_golem": {
+      "blood": 0
+    },
+    "minecraft:shulker": {
+      "blood": 0
+    },
+    "minecraft:slime": {
+      "blood": 0
+    },
+    "minecraft:wither_skeleton": {
+      "blood": 0
+    },
+    "minecraft:wither": {
+      "blood": 0
+    },
+    "minecraft:malkuth_fire_warrior": {
+      "blood": 0
+    },
+    "minecraft:malkuth_ice_warrior": {
+      "blood": 0
+    },
+
+    "netherman:statue_entity": {
+      "blood": 0
+    },
+    "netherman:azazel": {
+      "blood": 0
+    },
+    "netherman:manipulator": {
+      "blood": 0
+    },
+    "netherman:statue_bossunit": {
+      "blood": 0
+    },
+    "netherman:gilded_golem": {
+      "blood": 0
+    },
+
+    "quark:wraith": {
+      "blood": 0
+    },
+    "quark:forgotten": {
+      "blood": 0
+    },
+    "quark:stoneling": {
+      "blood": 0
+    },
+
+    "kobolds:kobold_skeleton": {
+      "blood": 0
+    },
+
+    "iceandfire:lich": {
+      "blood": 0
+    },
+    "iceandfire:dread_knight": {
+      "blood": 0
+    },
+    "iceandfire:dread_horse": {
+      "blood": 0
+    },
+    "iceandfire:dread_thrall": {
+      "blood": 0
+    },
+    "iceandfire:ghost": {
+      "blood": 0
+    },
+    "iceandfire:stymphalian_bird": {
+      "blood": 0
+    },
+    "iceandfire:troll": {
+      "blood": 0
+    },
+
+    "occultism:wild_hunt_skeleton": {
+      "blood": 0
+    },
+    "occultism:possessed_weak_shulker": {
+      "blood": 0
+    },
+    "occultism:possessed_shulker": {
+      "blood": 0
+    },
+    "occultism:possessed_enderman": {
+      "blood": 0
+    },
+    "occultism:possessed_endermite": {
+      "blood": 0
+    },
+    "occultism:marid": {
+      "blood": 0
+    },
+    "occultism:marid_unbound": {
+      "blood": 0
+    },
+    "occultism:possessed_skeleton": {
+      "blood": 0
+    },
+    "occultism:afrit": {
+      "blood": 0
+    },
+    "occultism:djinni": {
+      "blood": 0
+    },
+    "occultism:afrit_unbound": {
+      "blood": 0
+    },
+    "occultism:wild_horde_creeper": {
+      "blood": 0
+    },
+    "occultism:wild_weak_breeze": {
+      "blood": 0
+    },
+    "occultism:wild_strong_breeze": {
+      "blood": 0
+    },
+    "occultism:wild_breeze": {
+      "blood": 0
+    },
+    "occultism:iesnium_golem": {
+      "blood": 0
+    },
+
+    "aether:blue_swet": {
+      "blood": 0
+    },
+    "aether:evil_whirlwind": {
+      "blood": 0
+    },
+    "aether:fire_minion": {
+      "blood": 0
+    },
+    "aether:sentry": {
+      "blood": 0
+    },
+    "aether:mimic": {
+      "blood": 0
+    },
+    "aether:golden_swet": {
+      "blood": 0
+    },
+    "aether:whirlwind": {
+      "blood": 0
+    },
+    "aether:zephyr": {
+      "blood": 0
+    },
+
+    "alexmobs:enderiophage": {
+      "blood": 0
+    },
+    "alexmobs:guster": {
+      "blood": 0
+    },
+    "alexmobs:void_worm": {
+      "blood": 0
+    },
+    "alexmobs:skelewag": {
+      "blood": 0
+    },
+    "alexmobs:comb_jelly": {
+      "blood": 0
+    },
+    "alexmobs:rocky_roller": {
+      "blood": 0
+    },
+    "alexmobs:cosmaw": {
+      "blood": 0
+    },
+    "alexmobs:flutter": {
+      "blood": 0
+    },
+    "alexmobs:spectre": {
+      "blood": 0
+    },
+    "alexmobs:soul_vulture": {
+      "blood": 0
+    },
+    "alexmobs:mimicube": {
+      "blood": 0
+    },
+    "alexmobs:endergrade": {
+      "blood": 0
+    },
+    "alexmobs:bone_serpent": {
+      "blood": 0
+    },
+    "alexmobs:farseer": {
+      "blood": 0
+    },
+    "alexmobs:skreecher": {
+      "blood": 0
+    },
+    "alexmobs:underminer": {
+      "blood": 0
+    },
+
+    "royalvariations:royal_skeleton": {
+      "blood": 0
+    },
+    "royalvariations:royal_creeper": {
+      "blood": 0
+    },
+    "royalvariations:royal_enderman": {
+      "blood": 0
+    },
+
+    "born_in_chaos_v1:fallen_chaos_knight": {
+      "blood": 0
+    },
+    "born_in_chaos_v1:spirit_guide": {
+      "blood": 0
+    },
+    "born_in_chaos_v1:supreme_bonescaller": {
+      "blood": 0
+    },
+    "born_in_chaos_v1:bonescaller": {
+      "blood": 0
+    },
+    "born_in_chaos_v1:skeleton_thrasher": {
+      "blood": 0
+    },
+    "born_in_chaos_v1:siamese_skeletons": {
+      "blood": 0
+    },
+    "born_in_chaos_v1:baby_skeleton": {
+      "blood": 0
+    },
+    "born_in_chaos_v1:skeleton_demoman": {
+      "blood": 0
+    },
+    "born_in_chaos_v1:decrepit_skeleton": {
+      "blood": 0
+    },
+    "born_in_chaos_v1:bone_imp": {
+      "blood": 0
+    },
+    "born_in_chaos_v1:lifestealer": {
+      "blood": 0
+    },
+    "born_in_chaos_v1:restless_spirit": {
+      "blood": 0
+    },
+    "born_in_chaos_v1:scarlet_persecutor": {
+      "blood": 0
+    },
+    "born_in_chaos_v1:phantom_creeper": {
+      "blood": 0
+    },
+    "born_in_chaos_v1:dark_vortex": {
+      "blood": 0
+    },
+    "born_in_chaos_v1:spiritof_chaos": {
+      "blood": 0
+    },
+    "born_in_chaos_v1:nightmare_stalker": {
+      "blood": 0
+    },
+    "born_in_chaos_v1:pumpkin_spirit": {
+      "blood": 0
+    },
+    "born_in_chaos_v1:seared_spirit": {
+      "blood": 0
+    },
+    "born_in_chaos_v1:sir_pumpkinhead": {
+      "blood": 0
+    },
+    "born_in_chaos_v1:krampus": {
+      "blood": 0
+    },
+    "born_in_chaos_v1:infernal_spirit": {
+      "blood": 0
+    },
+    "born_in_chaos_v1:pumpkin_dunce": {
+      "blood": 0
+    },
+    "born_in_chaos_v1:mrs_pumpkin": {
+      "blood": 0
+    },
+    "born_in_chaos_v1:mr_pumpkin": {
+      "blood": 0
+    },
+    "born_in_chaos_v1:senor_pumpkin": {
+      "blood": 0
+    },
+    "born_in_chaos_v1:lord_pumpkinhead": {
+      "blood": 0
+    },
+
+    "cataclysm:ignis": {
+      "blood": 0
+    },
+    "cataclysm:ignited_berserker": {
+      "blood": 0
+    },
+    "cataclysm:ignited_revenant": {
+      "blood": 0
+    },
+    "cataclysm:endermaptera": {
+      "blood": 0
+    },
+    "cataclysm:ender_golem": {
+      "blood": 0
+    },
+    "cataclysm:ender_guardian": {
+      "blood": 0
+    },
+    "cataclysm:the_harbinger": {
+      "blood": 0
+    },
+    "cataclysm:the_prowler": {
+      "blood": 0
+    },
+    "cataclysm:netherite_monstrosity": {
+      "blood": 0
+    },
+    "cataclysm:the_leviathan": {
+      "blood": 0
+    },
+    "cataclysm:netherite_ministrosity": {
+      "blood": 0
+    },
+    "cataclysm:the_watcher": {
+      "blood": 0
+    },
+    "cataclysm:the_baby_leviathan": {
+      "blood": 0
+    },
+    "cataclysm:coralssus": {
+      "blood": 0
+    },
+    "cataclysm:coral_golem": {
+      "blood": 0
+    },
+    "cataclysm:deepling_brute": {
+      "blood": 0
+    },
+    "cataclysm:deepling_warlock": {
+      "blood": 0
+    },
+    "cataclysm:deepling_priest": {
+      "blood": 0
+    },
+    "cataclysm:deepling_angler": {
+      "blood": 0
+    },
+    "cataclysm:deepling": {
+      "blood": 0
+    },
+    "cataclysm:lionfish": {
+      "blood": 0
+    },
+    "cataclysm:cindaria": {
+      "blood": 0
+    },
+    "cataclysm:scylla": {
+      "blood": 0
+    },
+    "cataclysm:maledictus": {
+      "blood": 0
+    },
+    "cataclysm:wadjet": {
+      "blood": 0
+    },
+    "cataclysm:modern_remnant": {
+      "blood": 0
+    },
+    "cataclysm:ancient_remnant": {
+      "blood": 0
+    },
+    "cataclysm:amethyst_crab": {
+      "blood": 0
+    },
+    "cataclysm:koboleton": {
+      "blood": 0
+    },
+    "cataclysm:elite_draugr": {
+      "blood": 0
+    },
+    "cataclysm:royal_draugr": {
+      "blood": 0
+    },
+    "cataclysm:aptrgangr": {
+      "blood": 0
+    },
+    "cataclysm:draugr": {
+      "blood": 0
+    },
+    "cataclysm:hippocamtus": {
+      "blood": 0
+    },
+    "cataclysm:urchinkin": {
+      "blood": 0
+    },
+    "cataclysm:clawdian": {
+      "blood": 0
+    },
+    "cataclysm:octohost": {
+      "blood": 0
+    },
+
+    "deeperdarker:sludge": {
+      "blood": 0
+    },
+    "deeperdarker:stalker": {
+      "blood": 0
+    },
+    "deeperdarker:anger_pot": {
+      "blood": 0
+    },
+    "deeperdarker:fear_pot": {
+      "blood": 0
+    },
+    "deeperdarker:sorrow_pot": {
+      "blood": 0
+    },
+
+    "golemoverhaul:candle_golem": {
+      "blood": 0
+    },
+    "golemoverhaul:honey_golem": {
+      "blood": 0
+    },
+    "golemoverhaul:barrel_golem": {
+      "blood": 0
+    },
+    "golemoverhaul:coal_golem": {
+      "blood": 0
+    },
+    "golemoverhaul:hay_golem": {
+      "blood": 0
+    },
+    "golemoverhaul:slime_golem": {
+      "blood": 0
+    },
+    "golemoverhaul:terracotta_golem": {
+      "blood": 0
+    },
+    "golemoverhaul:netherite_golem": {
+      "blood": 0
+    },
+    "golemoverhaul:kelp_golem": {
+      "blood": 0
+    },
+
+    "scguns:cog_knight": {
+      "blood": 0
+    },
+    "scguns:trauma_unit": {
+      "blood": 0
+    },
+    "scguns:cog_minion": {
+      "blood": 0
+    },
+    "scguns:sky_carrier": {
+      "blood": 0
+    },
+    "scguns:supply_scamp": {
+      "blood": 0
+    },
+    "scguns:dissident": {
+      "blood": 0
+    },
+    "scguns:redcoat": {
+      "blood": 0
+    },
+    "scguns:blunderer": {
+      "blood": 0
+    },
+    "scguns:hornlin": {
+      "blood": 0
+    },
+    "scguns:scampler": {
+      "blood": 0
+    },
+    "scguns:adjudicator": {
+      "blood": 0
+    },
+    "scguns:signal_beacon": {
+      "blood": 0
+    },
+    "scguns:vivetrum": {
+      "blood": 0
+    },
+    "scguns:sulfurhead": {
+      "blood": 0
+    },
+    "scguns:scamp_tank": {
+      "blood": 0
+    },
+    "scguns:swarm": {
+      "blood": 0
+    },
+
+    "toxony:guided_spirit": {
+      "blood": 0
+    },
+
+    "alexscaves:teletor": {
+      "blood": 0
+    },
+    "alexscaves:notor": {
+      "blood": 0
+    },
+    "alexscaves:boundroid": {
+      "blood": 0
+    },
+    "alexscaves:ferrouslime": {
+      "blood": 0
+    },
+    "alexscaves:magnetron": {
+      "blood": 0
+    },
+    "alexscaves:nucleeper": {
+      "blood": 0
+    },
+    "alexscaves:gossamer_worm": {
+      "blood": 0
+    },
+    "alexscaves:deep_one_mage": {
+      "blood": 0
+    },
+    "alexscaves:mine_guardian": {
+      "blood": 0
+    },
+    "alexscaves:sweetish_fish": {
+      "blood": 0
+    },
+    "alexscaves:caniac": {
+      "blood": 0
+    },
+    "alexscaves:gumbeeper": {
+      "blood": 0
+    },
+    "alexscaves:candicorn": {
+      "blood": 0
+    },
+    "alexscaves:gum_worm": {
+      "blood": 0
+    },
+    "alexscaves:caramel_cube": {
+      "blood": 0
+    },
+    "alexscaves:gummy_bear": {
+      "blood": 0
+    },
+    "alexscaves:licowitch": {
+      "blood": 0
+    },
+    "alexscaves:gingerbread_man": {
+      "blood": 0
+    },
+
+    "irons_spellbooks:necromancer": {
+      "blood": 0
+    },
+    "irons_spellbooks:dead_king_corpse": {
+      "blood": 0
+    },
+    "irons_spellbooks:keeper": {
+      "blood": 0
+    },
+
+    "mowziesmobs:foliaath": {
+      "blood": 0
+    },
+    "mowziesmobs:wroughtnaut": {
+      "blood": 0
+    },
+    "mowziesmobs:umvuthana_raptor": {
+      "blood": 0
+    },
+    "mowziesmobs:umvuthana_crane": {
+      "blood": 0
+    },
+    "mowziesmobs:umvuthi": {
+      "blood": 0
+    },
+    "mowziesmobs:umvuthana": {
+      "blood": 0
+    },
+    "mowziesmobs:grottol": {
+      "blood": 0
+    },
+    "mowziesmobs:lantern": {
+      "blood": 0
+    },
+    "mowziesmobs:bluff": {
+      "blood": 0
+    },
+
+    "sculks_of_arda:sculk_enderman": {
+      "blood": 0
+    },
+    "sculks_of_arda:sculk_creaking": {
+      "blood": 0
+    },
+    "sculks_of_arda:agile_slime": {
+      "blood": 0
+    },
+    "sculks_of_arda:sculk_ghost": {
+      "blood": 0
+    },
+    "sculks_of_arda:sculk_golem": {
+      "blood": 0
+    },
+    "sculks_of_arda:shadow_hunter": {
+      "blood": 0
+    },
+    "sculks_of_arda:sculk_creeper": {
+      "blood": 0
+    },
+    "sculks_of_arda:sculk_skeleton": {
+      "blood": 0
+    },
+
+    "witchery:death": {
+      "blood": 0
+    },
+    "witchery:imp": {
+      "blood": 0
+    },
+    "witchery:lilith": {
+      "blood": 0
+    },
+    "witchery:spectral_pig": {
+      "blood": 0
+    },
+    "witchery:mandrake": {
+      "blood": 0
+    },
+    "witchery:ent": {
+      "blood": 0
+    },
+    "witchery:banshee": {
+      "blood": 0
+    },
+    "witchery:spectre": {
+      "blood": 0
+    },
+    "witchery:nightmare": {
+      "blood": 0
+    },
+    "witchery:vampire": {
+      "blood": 0
     }
   }
 }
