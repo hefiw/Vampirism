@@ -200,7 +200,7 @@ public class ExtendedCreature implements IAttachment, IExtendedCreatureVampirism
     @Override
     public int onBite(IVampire biter) {
         if (getBlood() <= 0) return 0;
-        int amt = Math.max(1, (getMaxBlood() / (biter instanceof VampirePlayer ? 6 : 2)));
+        int amt = 1;
         if (amt >= blood) {
             if (blood > 1 && biter.isAdvancedBiter()) {
                 amt = blood - 1;
